@@ -1,0 +1,28 @@
+/*
+body {
+    background-image: url("{% static 'clarence/images/clarence-background.png' %}");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+}
+*/
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+#default-view {
+    width: 75%;
+    padding: 20px;
+    text-align: center;
+}
+
+.form-control {
+    margin-bottom: 10px;
+}

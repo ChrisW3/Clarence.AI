@@ -1,0 +1,21 @@
+{% extends "clarence/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <div id="default-view">
+        <h3>Hey I'm Clarence! Tell me about the person you want to get Christmas gifts for!</h3>
+        <form id="questionForm" method="post">
+            {% csrf_token %}
+            <textarea class="form-control" id="questionContent"></textarea>
+            <input type="button" id="submitButton" class="btn btn-primary" value="Start Conversation">
+        </form>
+        <div id="chatDisplay"></div>
+    </div>
+
+    <div id="chat-view">
+    </div>
+{% endblock%}
+
+{% block script %}
+    <script src="{% static 'clarence/clarence.js' %}"></script>
+{% endblock %}
