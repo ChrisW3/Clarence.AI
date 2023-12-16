@@ -1,12 +1,8 @@
-/*
 body {
-    background-image: url("{% static 'clarence/images/clarence-background.png' %}");
-    background-size: cover;
+    background-image: url('images/clarence-bkg.png');
     background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
+    background-size: cover;
 }
-*/
 
 .container {
     display: flex;
@@ -17,12 +13,81 @@ body {
     height: 100%;
 }
 
+.row {
+    padding: 15px;
+}
+
 #default-view {
     width: 75%;
     padding: 20px;
     text-align: center;
 }
 
-.form-control {
+#chat-view {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transform: translateX(50%);
+    width: 50%;
+    height: 90%;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+}
+
+#chatBox {
     margin-bottom: 10px;
+    padding: 10px;
+    overflow-y: auto;
+    flex-grow: 1;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    bottom: 200px;
+    left: 0;
+    width: 100%;
+}
+
+#chatForm {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    position: fixed;
+    bottom: 100px;
+    left: 0;
+    width: 100%;
+}
+
+.chatTextContent {
+    width: 75%;
+}
+
+#messageContent {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+#sendButton {
+    height: 60px;
+    width: 100px;
+}
+
+.form-control {
+    width:100%;
+    margin-bottom: 10px;
+}
+
+h3 {
+    margin-top: 200px;
+    color: white;
+}
+
+.userChatLine {
+    color: white;
+    text-align: right;
+}
+
+.clarenceChatLine {
+    color: white;
+    text-align: left;
 }

@@ -4,15 +4,20 @@
 {% block body %}
     <div id="default-view">
         <h3>Hey I'm Clarence! Tell me about the person you want to get Christmas gifts for!</h3>
-        <form id="questionForm" method="post">
+        <form class="questionForm" method="post">
             {% csrf_token %}
-            <textarea class="form-control" id="questionContent"></textarea>
+            <textarea id="questionContent" class="form-control"></textarea>
             <input type="button" id="submitButton" class="btn btn-primary" value="Start Conversation">
         </form>
-        <div id="chatDisplay"></div>
     </div>
 
     <div id="chat-view">
+        <div id="chatBox"></div>
+        <form id="chatForm" class="questionForm" method="post">
+            {% csrf_token %}
+            <textarea id="messageContent" class="form-control"></textarea>
+            <input type="button" id="sendButton" class="btn btn-primary" value="Send">
+        </form>
     </div>
 {% endblock%}
 

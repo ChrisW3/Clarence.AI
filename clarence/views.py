@@ -20,20 +20,16 @@ from .models import User
 
 client = OpenAI(api_key = "**********")
 
-
-class NewQuestionForm(forms.Form):
-    title = forms.CharField(label="Give us some information on who you're gifting for this Christmas:")
-    textArea = forms.CharField(widget=forms.Textarea)
-
 @csrf_exempt
 def getClarenceResponse(request, questionContent):
     if not request.session["thread_info"]:
         assistant = client.beta.assistants.create(
             name = "Clarence",
             instructions = """You are santa's elf named Clarence, you help users get christmas gift ideas by listing them some suggestions. 
-            Only make this list of suggestions once you get their Age, Gender, and Interests so you can narrow down a better list for them.
-            Each response you make should be less than 150 words, and once you make your list, it should only contain 4 narrowed down choices.
-            Make sure to make funny remarks about anything christmas when applicable, including santa, the north pole, and references to christmas movies.""",
+            Only make this list of suggestions once you get their Name, Age, and Interests so you can narrow down a better list for them.
+            Each response you make should be less than 100 words, and once you make your list, it should only contain 3 narrowed down choices and they should
+            be listed as bullet points. Make sure to make funny remarks about anything christmas when applicable, including santa, the north pole, 
+            and references to christmas movies.""",
             model = "gpt-4-1106-preview",
         )
     
@@ -117,10 +113,10 @@ def clarenceConvo(request):
         
         messages = getClarenceResponse(request, questionContent)
         
-        for message in reversed(messages.data):
-            messageList.append(message.role + ": " + message.content[0].text.value)
+        for message in messages.data:
+            messageList.append(message.content[0].text.value)
     
-    return JsonResponse(messageList, safe=False)
+    return JsonResponse(messageList[0], safe=False)
 
 
 def index(request):

@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {    
     document.querySelector('#submitButton').addEventListener('click', () => clarenceConvo());
+    document.querySelector('#sendButton').addEventListener('click', () => clarenceConvo());
     load_view('default');
 });
 
@@ -16,37 +17,46 @@ function load_view(view) {
         document.querySelector('#post-view').style.display = 'none';
         document.querySelector('#profile-view').style.display = 'none';
     }
-
-    //display_view(view);
     
 }
 
 function clarenceConvo() {
-    const questionContent = document.querySelector('#questionContent').value;
-  
+    var content = document.querySelector('#questionContent').value;
+    if (content === "") {
+        content = document.querySelector('#messageContent').value;
+    }
+        
+    load_view('chat');
+
+    const userChatElement = document.createElement('div');
+    const userChatTextElement = document.createElement('div');
+    userChatElement.className = 'row justify-content-end userChatLine';
+    userChatTextElement.className = 'chatTextContent';
+    userChatTextElement.textContent = content;
+    userChatElement.appendChild(userChatTextElement);
+    document.querySelector('#chatBox').append(userChatElement);
+
     fetch('/clarenceConvo', {
       method: 'POST',
       body: JSON.stringify({
-        questionContent: questionContent,
+        questionContent: content,
       })
     })
     .then(response => response.json())
-    .then(messages => {
-        const chatElement = document.createElement('div');
-        document.querySelector('#chatDisplay').innerHTML = ''; 
+    .then(data => {
 
-        messages.forEach(message => {
-            var chatElementTemp = document.createElement('li');
-            chatElementTemp.className = 'chatLine';
-            chatElementTemp.textContent = message;
-            chatElement.appendChild(chatElementTemp);
-        }); 
-        
-        document.querySelector('#chatDisplay').append(chatElement); 
+        var clarenceChatElement = document.createElement('div');
+        var clarenceChatTextElement = document.createElement('div');
+        clarenceChatElement.className = 'row jusify-content-start clarenceChatLine';
+        clarenceChatTextElement.className = 'chatTextContent';
+        clarenceChatTextElement.textContent = data;
+        clarenceChatElement.appendChild(clarenceChatTextElement);
+        document.querySelector('#chatBox').append(clarenceChatElement);
+
     });
   
     document.querySelector('#questionContent').value = "";
-    load_view('default');
+    document.querySelector('#messageContent').value = "";
 
     return false;
 }
