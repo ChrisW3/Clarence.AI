@@ -14,11 +14,12 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.middleware import csrf
 from django import forms
+from decouple import config
 
 from .models import User
 
 
-client = OpenAI(api_key = "**********")
+client = OpenAI(api_key = config('OPENAI_API_KEY'))
 
 @csrf_exempt
 def getClarenceResponse(request, questionContent):
@@ -27,9 +28,11 @@ def getClarenceResponse(request, questionContent):
             name = "Clarence",
             instructions = """You are santa's elf named Clarence, you help users get christmas gift ideas by listing them some suggestions. 
             Only make this list of suggestions once you get their Name, Age, and Interests so you can narrow down a better list for them.
-            Each response you make should be less than 100 words, and once you make your list, it should only contain 3 narrowed down choices and they should
-            be listed as bullet points. Make sure to make funny remarks about anything christmas when applicable, including santa, the north pole, 
-            and references to christmas movies.""",
+            If they only give a name, then ask them for the other details. If they give you their title (for example: mom, dad, brother, 
+            sister, cousin, etc) that will suffice as a name as well. Each response you make should be less than 100 words, and once you 
+            make your list, it should only contain 3 narrowed down choices and they should be listed as bullet points. The user could ask for more
+            suggestions if they ask, but just keep it limited to 3 gift ideas per message. Make sure to make funny remarks about anything christmas 
+            when applicable, including santa, the north pole, and references to christmas movies.""",
             model = "gpt-4-1106-preview",
         )
     
@@ -55,7 +58,7 @@ def getClarenceResponse(request, questionContent):
             )
             status = run_assistant.status
             print(status)
-            time.sleep(5)
+            time.sleep(2)
             
         request.session["thread_info"].append({"thread_id": thread.id, "assistant_id": assistant.id})
         request.session.modified = True
@@ -89,7 +92,7 @@ def getClarenceResponse(request, questionContent):
             )
             status = run_assistant.status
             print(status)
-            time.sleep(5)
+            time.sleep(2)
             
         messages = client.beta.threads.messages.list(
             thread_id = thread_id

@@ -12,12 +12,14 @@
     </div>
 
     <div id="chat-view">
-        <div id="chatBox"></div>
-        <form id="chatForm" class="questionForm" method="post">
-            {% csrf_token %}
-            <textarea id="messageContent" class="form-control"></textarea>
-            <input type="button" id="sendButton" class="btn btn-primary" value="Send">
-        </form>
+        <div id="chatBox-background">
+            <div id="chatBox"></div>
+            <form id="chatForm" class="questionForm" method="post">
+                {% csrf_token %}
+                <textarea id="messageContent" class="form-control"></textarea>
+                <input type="button" id="sendButton" class="btn btn-primary" value="Send">
+            </form>
+        </div>   
     </div>
 {% endblock%}
 

@@ -35,16 +35,23 @@ body {
     position: fixed;
 }
 
+#chatBox-background {
+    background-color: rgba(0, 0, 0, 0.6);
+    margin-bottom: 50px;
+    height: 500px;
+}
+
 #chatBox {
     margin-bottom: 10px;
     padding: 10px;
-    overflow-y: auto;
+    max-height: 475px;
+    overflow-y: scroll;
     flex-grow: 1;
-    background-color: rgba(0, 0, 0, 0.6);
     position: fixed;
     bottom: 200px;
     left: 0;
     width: 100%;
+    
 }
 
 #chatForm {
