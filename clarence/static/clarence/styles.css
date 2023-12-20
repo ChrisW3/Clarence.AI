@@ -14,12 +14,12 @@ body {
 }
 
 .row {
-    padding: 15px;
+    padding: 1rem;
 }
 
 #default-view {
     width: 75%;
-    padding: 20px;
+    padding: 1.25rem;
     text-align: center;
 }
 
@@ -37,18 +37,18 @@ body {
 
 #chatBox-background {
     background-color: rgba(0, 0, 0, 0.6);
-    margin-bottom: 50px;
-    height: 500px;
+    margin-bottom: 3rem;
+    height: 31rem;
 }
 
 #chatBox {
-    margin-bottom: 10px;
-    padding: 10px;
-    max-height: 475px;
+    margin-bottom: 0.7rem;
+    padding: 0.7rem;
+    max-height: 29rem;
     overflow-y: scroll;
     flex-grow: 1;
     position: fixed;
-    bottom: 200px;
+    bottom: 12.5rem;
     left: 0;
     width: 100%;
     
@@ -57,10 +57,10 @@ body {
 #chatForm {
     display: flex;
     justify-content: space-between;
-    padding: 10px;
+    padding: 0.7rem;
     background-color: rgba(255, 255, 255, 0.8);
     position: fixed;
-    bottom: 100px;
+    bottom: 6rem;
     left: 0;
     width: 100%;
 }
@@ -71,21 +71,21 @@ body {
 
 #messageContent {
     flex-grow: 1;
-    margin-right: 10px;
+    margin-right: 0.7rem;
 }
 
 #sendButton {
-    height: 60px;
-    width: 100px;
+    height: 4rem;
+    width: 6rem;
 }
 
 .form-control {
     width:100%;
-    margin-bottom: 10px;
+    margin-bottom: 0.7rem;
 }
 
 h3 {
-    margin-top: 200px;
+    margin-top: 12.5rem;
     color: white;
 }
 
