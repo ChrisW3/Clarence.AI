@@ -20,7 +20,7 @@ from decouple import config
 from .models import User
 
 
-client = OpenAI(api_key = config('OPEN_API_KEY'))
+client = OpenAI(api_key = config('OPENAI_API_KEY'))
 
 @csrf_exempt
 def getClarenceResponse(request, questionContent):
