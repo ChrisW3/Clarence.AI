@@ -4,7 +4,7 @@ body {
     background-size: cover;
 }
 
-.container {
+#mainContainer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,7 +18,7 @@ body {
 }
 
 #default-view {
-    width: 75%;
+    width: 100%;
     padding: 1.25rem;
     text-align: center;
 }
@@ -27,11 +27,9 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    transform: translateX(50%);
-    width: 50%;
+    width: 90%;
     height: 90%;
     bottom: 0;
-    left: 0;
     position: absolute;
 }
 
@@ -41,13 +39,22 @@ body {
     height: 31rem;
 }
 
+#wishlistBackground {
+    background-color: rgba(0, 0, 0, 0.6);
+    margin-bottom: 3rem;
+    height: 31rem;
+}
+
+#wishlist-title {
+    bottom: 3rem;
+}
+
 #chatBox {
     margin-bottom: 0.7rem;
     padding: 0.7rem;
     max-height: 29rem;
     overflow-y: scroll;
     flex-grow: 1;
-    position: fixed;
     bottom: 12.5rem;
     left: 0;
     width: 100%;
@@ -58,8 +65,7 @@ body {
     justify-content: space-between;
     padding: 0.7rem;
     background-color: rgba(255, 255, 255, 0.8);
-    position: fixed;
-    bottom: 6rem;
+    bottom: 0;
     left: 0;
     width: 100%;
 }
@@ -79,7 +85,6 @@ body {
 }
 
 .form-control {
-    width:100%;
     margin-bottom: 0.7rem;
 }
 
