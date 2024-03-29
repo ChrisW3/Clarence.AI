@@ -2,6 +2,7 @@ from openai import OpenAI
 import json
 import time
 import os
+from dotenv import load_dotenv
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
@@ -19,8 +20,9 @@ from decouple import config
 
 from .models import User
 
+load_dotenv()
 
-client = OpenAI(api_key = os.environ['OPEN_API_KEY'])
+client = OpenAI(api_key = os.getenv('OPEN_API_KEY'))
 
 @csrf_exempt
 def getClarenceResponse(request, questionContent):
